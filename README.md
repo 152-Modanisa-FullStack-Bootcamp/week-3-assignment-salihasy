@@ -27,7 +27,6 @@
 * [Description](#description)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Sources](#sources)
 
 <br />
 
