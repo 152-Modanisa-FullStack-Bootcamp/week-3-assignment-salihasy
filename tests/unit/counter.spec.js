@@ -32,14 +32,14 @@ describe("Counter.vue", () => {
         // if the second button is not found this will return false, and test will fail, the second button text is "Increase"
     it('increase exists check', () => {
         const wrapper = mountComponent()
-        let a = wrapper.findAll('button').at(1)
+        let a = wrapper.findAll('button').filter(x => x.text().match("Increase"))
         expect(a.exists()).toBeTruthy()
     })
 
         // if the first button is not found this will return false, and test will fail, the first button text is "Decrease"
     it('decrease exists check', () => {
         const wrapper = mountComponent()
-        let a = wrapper.findAll('button').at(0)
+        let a = wrapper.findAll('button').filter(x => x.text().match("Decrease"))
         expect(a.exists()).toBeTruthy()
     })
 
@@ -73,7 +73,7 @@ describe("Counter.vue", () => {
             }
         })
 
-        let button = wrapper.findAll('button').at(1)
+        let button = wrapper.findAll('button').filter(x => x.text().match("Increase"))
         button.trigger('click')
         expect(dispatchMock).toHaveBeenCalledWith('increment')
 
@@ -84,8 +84,8 @@ describe("Counter.vue", () => {
     it('2 increase + decrease functionality check together',async() => {
         const wrapper = mountComponent()
         const afterCount = 1 // -2 + 1 = 1, we expect that the count value is 2
-        let button1 = wrapper.findAll('button').at(1) // increase button
-        let button2 = wrapper.findAll('button').at(0) // decrease button
+        let button1 = wrapper.findAll('button').filter(x => x.text().match("Increase")) // increase button
+        let button2 = wrapper.findAll('button').filter(x => x.text().match("Decrease")) // decrease button
 
         // 2 increase
         button1.trigger('click')
